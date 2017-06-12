@@ -35,7 +35,7 @@
 #define RANDOM_S(STANDARD, SIZE) (STANDARD-(SIZE/2)+rand()%SIZE)//time.h
 #define RANDOM_M(MIN, MAX) (MIN + rand()%(MAX+1-MIN))           //time.h
 int     RANDOM_E(int exceptSize, int size);
-const bool  FULL_SCREEN   = true;
+const bool  FULL_SCREEN   = false;
 const bool  VSYNC_ENABLED = true;
 const float SCREEN_DEPTH  = 12000.f; // 이 이상 넘어가게 되면 알아서 컬링컬링 ><
 const float SCREEN_NEAR   = 0.1f;

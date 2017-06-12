@@ -1,7 +1,6 @@
 #pragma once
 #include"Prev.h"
-#include"Keyboard.h"
-#include"Renderer.h"
+#include"SceneManager.h"
 class Game{
 //▼ 싱글톤 관련 
 // 싱글톤쓰는 이유는 WinProc()에서 getSingletone()할라궁.
@@ -29,6 +28,7 @@ private:
     // 인풋, 그래픽
     Keyboard* _keyboard    = NULL;
     Renderer* _renderer    = NULL;
+    SceneManager* _sceneManager = NULL;
     // 윈도우 관련
     LPCWSTR   _appTitle    = L"TeraGate";
     HINSTANCE _hInstance   = GetModuleHandle(NULL);

@@ -58,3 +58,7 @@ D3DXMATRIX Object::getMtxWorld()
 void Object::update()
 {
 }
+void Object::setArkDes(D3DXVECTOR3 ark, D3DXVECTOR3 des)
+{
+    
+}

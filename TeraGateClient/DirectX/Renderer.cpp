@@ -47,26 +47,23 @@ void Renderer::init(HWND hwnd, int screenWidth, int screenHeight)
     _fbx[2] = new FBX;
     if (!_fbx[2]) MessageBox(NULL, L"new FBX", L"Error", NULL);
     _fbx[2]->init(_direct->getDevice(), "Resource/FBX/skybox.fbx", L"Resource/DDS/skybox.dds");
-
-    //오브젝트PC
-    _fbx[3] = new FBX;
-    if (!_fbx[3])MessageBox(NULL, L"new FBX", L"Error", NULL);
-    _fbx[3]->init(_direct->getDevice(), "Resource/FBX/hengelBlack.fbx", L"Resource/DDS/hengelBlack.dds");
-
-
     //오브젝트 게이트
+    _fbx[3] = new FBX;
+    if (!_fbx[3]) MessageBox(NULL, L"new FBX", L"Error", NULL);
+    _fbx[3]->init(_direct->getDevice(), "Resource/FBX/gate.fbx", L"Resource/DDS/gate.dds");
+    //오브젝트 바위
     _fbx[4] = new FBX;
     if (!_fbx[4]) MessageBox(NULL, L"new FBX", L"Error", NULL);
-    _fbx[4]->init(_direct->getDevice(), "Resource/FBX/gate.fbx", L"Resource/DDS/gate.dds");
-    //오브젝트 바위
+    _fbx[4]->init(_direct->getDevice(), "Resource/FBX/stone.fbx", L"Resource/DDS/stone.dds");
+    //오브젝트 미니언
     _fbx[5] = new FBX;
     if (!_fbx[5]) MessageBox(NULL, L"new FBX", L"Error", NULL);
-    _fbx[5]->init(_direct->getDevice(), "Resource/FBX/stone.fbx", L"Resource/DDS/stone.dds");
-    //오브젝트 미니언
-    _fbx[6] = new FBX;
-    if (!_fbx[6]) MessageBox(NULL, L"new FBX", L"Error", NULL);
-    _fbx[6]->init(_direct->getDevice(), "Resource/FBX/minion.fbx", L"Resource/DDS/minion.dds");
+    _fbx[5]->init(_direct->getDevice(), "Resource/FBX/minion.fbx", L"Resource/DDS/minion.dds");
 
+    //오브젝트PC
+    _fbx[6] = new FBX;
+    if (!_fbx[6])MessageBox(NULL, L"new FBX", L"Error", NULL);
+    _fbx[6]->init(_direct->getDevice(), "Resource/FBX/hengelBlack.fbx", L"Resource/DDS/hengelBlack.dds");
 
 
     //▼오브젝트 매니저
@@ -83,11 +80,6 @@ void Renderer::init(HWND hwnd, int screenWidth, int screenHeight)
 
     // 스카이박스 * 1
     object = new ObjectGround();
-    object->setPos(0, 0, 0);
-    _objectManager.addObject(object);
-
-    // PC * 1
-    object = new ObjectPC();
     object->setPos(0, 0, 0);
     _objectManager.addObject(object);
 
@@ -127,123 +119,16 @@ void Renderer::init(HWND hwnd, int screenWidth, int screenHeight)
         _objectManager.addObject(object);
     }
     // 미니언 * N
-    //for (int i = 0; i < 200; i++)
-    //{
-    //    object = new ObjectMinion();
-    //    object->setPos(0, 0, 0);
-    //    _objectManager.addObject(object);
-    //}
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(0, 0, 800));
-    object->setUpdateCount(0);
-    object->setRotY(23);
+    for (int i = 0; i < 200; i++)
+    {
+        object = new ObjectMinion();
+        object->setPos(0, 0, 0);
+        _objectManager.addObject(object);
+    }
+    // PC * 1
+    object = new ObjectPC();
+    object->setPos(0, 0, 0);
     _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(-600, 0, 800));
-    object->setUpdateCount(50);
-    object->setRotY(23);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(-600, 0, 800));
-    object->setUpdateCount(100);
-    object->setRotY(23);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(0);
-    object->setRotY(45);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(50);
-    object->setRotY(45);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(100);
-    object->setRotY(45);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(0);
-    object->setRotY(90);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(50);
-    object->setRotY(90);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(-600, 0, -600), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(100);
-    object->setRotY(90);
-    _objectManager.addObject(object);
-
-
-
-    // 미니언 중립
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(-600, 0, -600));
-    object->setUpdateCount(0);
-    object->setRotY(-156);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(-600, 0, -600));
-    object->setUpdateCount(50);
-    object->setRotY(-156);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(-600, 0, -600));
-    object->setUpdateCount(100);
-    object->setRotY(-156);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(0);
-    object->setRotY(-180);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(50);
-    object->setRotY(-180);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(0, 0, 0));
-    object->setUpdateCount(100);
-    object->setRotY(-180);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(0);
-    object->setRotY(155);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(50);
-    object->setRotY(155);
-    _objectManager.addObject(object);
-
-    object = new ObjectMinion();
-    object->setArkDes(D3DXVECTOR3(0, 0, 800), D3DXVECTOR3(600, 0, -600));
-    object->setUpdateCount(100);
-    object->setRotY(155);
-    _objectManager.addObject(object);
-
 
 
     //▼셰이더
@@ -254,8 +139,8 @@ void Renderer::init(HWND hwnd, int screenWidth, int screenHeight)
     //▼조명
     _light = new Light;
     if (!_light) MessageBox(NULL, L"new Light", L"Error", NULL);
-    _light->setDiffuseColor(0.3f, 0.3f, 0.3f, 1.0f);
-    _light->setAmbientColor(0.7f, 0.7f, 0.9f, 1.0f);
+    _light->setDiffuseColor(0.2f, 0.2f, 0.2f, 1.0f);
+    _light->setAmbientColor(0.9f, 0.9f, 0.9f, 1.0f);
     _light->setDirection(0.f, -1.f, 0.f);
 #ifdef _DEBUG
     printf("Renderer::init();\n");
@@ -334,8 +219,7 @@ void Renderer::render()
         _camera->getMtxView(), _direct->getMtxProjection(),
         _fbx[2]->getTexture(),
         _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
-
-    // pc
+    // 게이트
     _fbx[3]->render(_direct->getDeviceContext());
     _shader->render(
         _direct->getDeviceContext(),
@@ -344,40 +228,43 @@ void Renderer::render()
         _camera->getMtxView(), _direct->getMtxProjection(),
         _fbx[3]->getTexture(),
         _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
-
-    // 게이트
-    _fbx[4]->render(_direct->getDeviceContext());
     _shader->render(
         _direct->getDeviceContext(),
-        _fbx[4]->getIndexCount(),
+        _fbx[3]->getIndexCount(),
         _objectManager.getWorldMatrix(4),
         _camera->getMtxView(), _direct->getMtxProjection(),
-        _fbx[4]->getTexture(),
+        _fbx[3]->getTexture(),
         _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
     _shader->render(
         _direct->getDeviceContext(),
-        _fbx[4]->getIndexCount(),
+        _fbx[3]->getIndexCount(),
         _objectManager.getWorldMatrix(5),
         _camera->getMtxView(), _direct->getMtxProjection(),
-        _fbx[4]->getTexture(),
+        _fbx[3]->getTexture(),
         _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
     _shader->render(
         _direct->getDeviceContext(),
-        _fbx[4]->getIndexCount(),
+        _fbx[3]->getIndexCount(),
         _objectManager.getWorldMatrix(6),
         _camera->getMtxView(), _direct->getMtxProjection(),
-        _fbx[4]->getTexture(),
-        _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
-    _shader->render(
-        _direct->getDeviceContext(),
-        _fbx[4]->getIndexCount(),
-        _objectManager.getWorldMatrix(7),
-        _camera->getMtxView(), _direct->getMtxProjection(),
-        _fbx[4]->getTexture(),
+        _fbx[3]->getTexture(),
         _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
     // 스톤
+    _fbx[4]->render(_direct->getDeviceContext());
+    for(int i=7;i<107;i++)
+    {
+        _shader->render(
+            _direct->getDeviceContext(),
+            _fbx[4]->getIndexCount(),
+            _objectManager.getWorldMatrix(i),
+            _camera->getMtxView(), _direct->getMtxProjection(),
+            _fbx[4]->getTexture(),
+            _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
+    }
+
+    // 미니언
     _fbx[5]->render(_direct->getDeviceContext());
-    for(int i=8;i<108;i++)
+    for(int i=107;i<307;i++)
     {
         _shader->render(
             _direct->getDeviceContext(),
@@ -387,19 +274,16 @@ void Renderer::render()
             _fbx[5]->getTexture(),
             _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
     }
-
-    // 미니언
+    // pc
     _fbx[6]->render(_direct->getDeviceContext());
-    for(int i=108;i<_objectManager.getObjectAmount();i++)
-    {
-        _shader->render(
-            _direct->getDeviceContext(),
-            _fbx[6]->getIndexCount(),
-            _objectManager.getWorldMatrix(i),
-            _camera->getMtxView(), _direct->getMtxProjection(),
-            _fbx[6]->getTexture(),
-            _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
-    }    
+    _shader->render(
+        _direct->getDeviceContext(),
+        _fbx[6]->getIndexCount(),
+        _objectManager.getWorldMatrix(307),
+        _camera->getMtxView(), _direct->getMtxProjection(),
+        _fbx[6]->getTexture(),
+        _light->getDirection(), _light->getDiffuseColor(), _light->getAmbientColor());
+    
 
     //▼백버퍼 스왑체인
     _direct->swapchain();

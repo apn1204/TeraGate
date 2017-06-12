@@ -28,15 +28,8 @@ public://인터페이스
     D3DXMATRIX  getMtxWorld();
     //가상 인터페이스
     virtual void update();
-    virtual void setArkDes(D3DXVECTOR3 ark, D3DXVECTOR3 des) {
-        _ark = ark;
-        _pos = ark;
-        _des = des;
-    }// 나중에 지울 것. 초기위치, 목적지 좌표를 결정
-    virtual void setUpdateCount(int count) { _updateCount = count; }
+    virtual void setArkDes(D3DXVECTOR3 ark, D3DXVECTOR3 des); // 초기위치, 목적지 좌표를 결정
 protected:
-    int         _updateCount = 0;
-    D3DXVECTOR3 _ark;
     D3DXVECTOR3 _pos;
     D3DXVECTOR3 _des;
     D3DXVECTOR3 _rot;

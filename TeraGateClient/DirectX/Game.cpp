@@ -12,9 +12,11 @@ void Game::init()
 {
     initWindow();
 
-    _keyboard    = new Keyboard;
-    _renderer = new Renderer;
+    _keyboard     = new Keyboard;
+    _renderer     = new Renderer;
+    _sceneManager = new SceneManager;
     _renderer->init(_hwnd, _rectWindow.right, _rectWindow.bottom);
+    _sceneManager->init(_keyboard, _renderer);
 
     PlaySound(L"Resource/Sound/bgmUntitled", NULL, SND_ASYNC | SND_LOOP);
 #ifdef _DEBUG
@@ -105,7 +107,11 @@ void Game::release()
 
     if(_renderer)
         delete _renderer;
-        _renderer = NULL;
+    _renderer = NULL;
+
+    if(_sceneManager)
+        delete _sceneManager;
+    _sceneManager = NULL;
 
     releaseWindow();
 }
@@ -137,11 +143,11 @@ void Game::run()
 }
 void Game::render()
 {
-    _renderer->render();
+    _sceneManager->render();
 }
 void Game::update()
 {
-    _renderer->update();
+    _sceneManager->update();
 }
 void Game::proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
